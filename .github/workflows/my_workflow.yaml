@@ -14,8 +14,8 @@ jobs:
     - name: build_docker
       run: docker build -t my_docker_image .
 
-    - name: run_train
-      run: docker run -v ${{ github.workspace }}:/app my_docker_image python train.py
+    - name: run_train.py
+      run: docker run my_docker_image python3 train.py
 
     - name: copy_model
       run: docker cp my_docker_image model.h5 model.h5
@@ -31,8 +31,8 @@ jobs:
     - name: build_docker
       run: docker build -t Dockerfile .
 
-    - name: run_evaluate
-      run: docker run -v ${{ github.workspace }}:/app my_docker_image python predict.py
+    - name: run_predict.py
+      run: docker run my_docker_image python3 predict.py
 
   archive_model:
     needs: train
