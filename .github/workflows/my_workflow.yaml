@@ -11,14 +11,8 @@ jobs:
     - name: checkout_repo
       uses: actions/checkout@v2
 
-    - name: build_docker
-      run: docker build -t Dockerfile .
-
     - name: run_train.py
-      run: docker run my_docker_image python train.py
-
-    - name: copy_model
-      run: docker cp my_docker_image model.h5 model.h5
+      run: python train.py
 
   evaluate:
     needs: train
@@ -28,11 +22,8 @@ jobs:
     - name: checkout_repo
       uses: actions/checkout@v2
 
-    - name: build_docker
-      run: docker build -t Dockerfile .
-
     - name: run_predict.py
-      run: docker run my_docker_image python predict.py
+      run: python predict.py
 
   archive_model:
     needs: train
