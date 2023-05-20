@@ -14,6 +14,3 @@ RUN pip install --user scikit-learn
 RUN apt install git -y
 COPY train.py /app/train.py
 CMD python3 predict.py
-
-
-WORKDIR /app
