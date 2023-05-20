@@ -11,6 +11,7 @@ RUN pip install --user tensorflow
 RUN pip install --user sacred
 RUN pip install --user numpy
 RUN apt install git -y
+COPY train.py /app/train.py
 CMD python3 predict.py
 
 
