@@ -6,13 +6,13 @@ import sklearn.model_selection
 from tensorflow.keras.models import load_model
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-import mlflow
+#import mlflow
 
 # Wskazujemy ścieżkę do folderu, gdzie zostaną zapisane wyniki MLflow
-mlflow.set_tracking_uri("file:/mlflow")
+#mlflow.set_tracking_uri("file:/mlflow")
 
 # Ustawiamy nazwę eksperymentu
-mlflow.set_experiment("nazwa eksperymentu")
+#mlflow.set_experiment("nazwa eksperymentu")
 
 feature_cols = ['year', 'mileage', 'vol_engine']
 
