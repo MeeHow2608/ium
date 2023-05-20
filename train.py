@@ -6,8 +6,8 @@ import sklearn
 import sklearn.model_selection
 import numpy as np
 
-ex = Experiment('452662')
-ex.observers.append(FileStorageObserver.create('my_runs'))
+#ex = Experiment('452662')
+#ex.observers.append(FileStorageObserver.create('my_runs'))
 #ex.observers.append(MongoObserver(url='mongodb://admin:IUM_2021@172.17.0.1:27017', db_name='sacred'))
 
 def normalize(df,feature_name):
@@ -18,7 +18,7 @@ def normalize(df,feature_name):
     return result
 
 
-@ex.automain
+#@ex.automain
 def run_experiment():
     cars = pd.read_csv('zbior_ium/Car_Prices_Poland_Kaggle.csv')
 
@@ -47,14 +47,12 @@ def run_experiment():
 
     model.fit(cars_train[feature_cols], cars_train['price'], epochs=100)
 
-    ex.add_resource('train_data.csv')
-    ex.add_resource('test_data.csv')
-
-    ex.add_artifact(__file__)
+    #ex.add_resource('train_data.csv')
+    #ex.add_artifact(__file__)
 
     model.save('model.h5')
-    ex.add_artifact('model.h5')
+    #ex.add_artifact('model.h5')
 
     metrics = model.evaluate(cars_train[feature_cols], cars_train['price'])
-    ex.log_scalar('mse', metrics[0])
-    ex.log_scalar('mae', metrics[1])
+    #ex.log_scalar('mse', metrics[0])
+    #ex.log_scalar('mae', metrics[1])
