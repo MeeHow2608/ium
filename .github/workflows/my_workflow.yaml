@@ -17,6 +17,11 @@ jobs:
     - name: run_train.py
       run: docker run -v ${{ github.workspace }}:/app my_docker_image python3 /app/train.py
       
+    - name: check
+      run: docker run my_docker_image ls -l ./
+      
+    
+      
   evaluate:
     needs: train
     runs-on: ubuntu-latest
