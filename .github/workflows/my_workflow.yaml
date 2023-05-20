@@ -15,7 +15,7 @@ jobs:
       run: docker build -t my_docker_image .
 
     - name: run_train.py
-      run: docker run my_docker_image python3 train.py
+      run: docker run -v ${{ github.workspace }}:/app my_docker_image python3 /app/train.py
 
     - name: copy_model
       run: docker cp my_docker_image model.h5 model.h5
