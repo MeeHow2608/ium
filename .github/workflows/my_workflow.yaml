@@ -16,6 +16,9 @@ jobs:
 
     - name: run_train.py
       run: docker run -v ${{ github.workspace }}:/app my_docker_image python3 /app/train.py
+      
+    - name: list_files
+      run: docker run my_docker_image ls -l /app
 
     - name: copy_model
       run: docker run --rm -v ${{ github.workspace }}:/app my_docker_image cp model.h5 /app/model.h5
